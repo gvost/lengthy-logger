@@ -1,5 +1,5 @@
 {
-  "name": "lengthylogger",
+  "name": "lengthy-logger",
   "version": "1.0.0",
   "description": "a console.log alternative that tells you where you log is being called from (so you can delete it when you are finished with it)",
   "main": "index.js",
@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^2.1.0",
     "colors": "^1.1.2",
     "string": "^3.3.3"
   },
