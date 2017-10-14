@@ -12,13 +12,17 @@ npm install --save-dev lengthy-logger
 ```js
 var log = require('lengthy-logger')
 
+var object = {
+  thing1: 'bar',
+  thing2: true
+}
+var array = ['loo', 'tag', 'moo']
+
 log('single string argument')
-```
-
-##### ___or___
-
-```js
-var log = require('lengthy-logger')
-
-console.log(log(), 'other stuff you want to see')
+// output: file@/Users/yourusername/.../where/you/called/file.js@line12 🗣 single string argument
+log('string1', 'string2', 'string3', 'string4')
+// output: file@/Users/yourusername/.../where/you/called/file.js@line12 🗣 string1 string2 string3 string4
+log('string', object, array)
+// output: file@/Users/yourusername/.../where/you/called/file.js@line12 🗣 string
+//  [{ thing1: 'bar', thing2: true }, ['loo', 'tag', 'moo']]
 ```
