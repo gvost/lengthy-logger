@@ -28,7 +28,7 @@ describe('check line', function () {
 describe('check argument output (single string)', function () {
   it('should return single matching string', function () {
     var logObject = log('string')
-    assert.equal('string', logObject.arg1)
+    assert.equal('string', logObject.arg)
   })
 })
 describe('check argument output (multipule strings)', function () {

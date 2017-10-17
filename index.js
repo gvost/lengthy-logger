@@ -1,6 +1,6 @@
 var chalk = require('chalk');
 
-function lengthylogger (arg1, ...args) {
+function lengthylogger (arg, ...args) {
   var orig = Error.prepareStackTrace;
   const myObject = {};
   var err = new Error();
@@ -11,23 +11,23 @@ function lengthylogger (arg1, ...args) {
     line: stack[1].getLineNumber(),
     objects: [],
     messages: [],
-    arg1
+    arg
   };
   args.forEach(arg => {
     if (typeof(arg) === 'string') {
       logObject.messages.push(arg);
     } if (typeof(arg) === 'object') {
       logObject.objects.push(arg);
-    }
+    };
   });
   if (process.env.NODE_ENV !== 'testing') {
-    if (typeof(arg1) !== 'string') {
-      console.log(`${chalk.dim('file')}@${chalk.cyan(logObject.file)}@${chalk.cyan('line')}${chalk.dim(logObject.line)} 🗣`, '\n', arg1);
+    if (typeof(arg) !== 'string') {
+      console.log(`${chalk.dim('file')}@${chalk.cyan(logObject.file)}@${chalk.cyan('line')}${chalk.dim(logObject.line)} 🗣`, '\n', arg);
     } else {
       if (logObject.objects == 0) {
-        console.log(`${chalk.dim('file')}@${chalk.cyan(logObject.file)}@${chalk.cyan('line')}${chalk.dim(logObject.line)} 🗣 ${arg1} ${logObject.messages.join(' ')}`);
+        console.log(`${chalk.dim('file')}@${chalk.cyan(logObject.file)}@${chalk.cyan('line')}${chalk.dim(logObject.line)} 🗣 ${arg} ${logObject.messages.join(' ')}`);
       } else {
-        console.log(`${chalk.dim('file')}@${chalk.cyan(logObject.file)}@${chalk.cyan('line')}${chalk.dim(logObject.line)} 🗣 ${arg1} ${logObject.messages.join(' ')}`, '\n', logObject.objects);
+        console.log(`${chalk.dim('file')}@${chalk.cyan(logObject.file)}@${chalk.cyan('line')}${chalk.dim(logObject.line)} 🗣 ${arg} ${logObject.messages.join(' ')}`, '\n', logObject.objects);
       };
     };
   } else {
